@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.test1.Controller.UserController">
+    <children>
+        <BorderPane prefHeight="565.0" prefWidth="823.0">
+            <center>
+                <VBox prefHeight="466.0" prefWidth="557.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane prefHeight="610.0" prefWidth="823.0">
+                            <children>
+                                <Pane layoutY="1.0" prefHeight="648.0" prefWidth="823.0">
+                                    <children>
+                                        <ImageView fitHeight="558.0" fitWidth="836.0" layoutX="-6.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/Signup_image.jpg" />
+                                            </image>
+                                        </ImageView>
+                                        <Button fx:id="loginButton" alignment="CENTER" contentDisplay="RIGHT" layoutX="344.0" layoutY="415.0" mnemonicParsing="false" opacity="0.83" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #566573;" text="LOGIN" textFill="WHITE">
+                                            <font>
+                                                <Font name="Century" size="17.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="8.0" left="-5.0" right="-5.0" top="8.0" />
+                                            </padding>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </Button>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="350.0" layoutY="118.0" prefHeight="110.0" prefWidth="124.0" text="Login" textAlignment="CENTER">
+                                            <font>
+                                                <Font name="Constantia Bold Italic" size="41.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="loginUserNameField" layoutX="199.0" layoutY="251.0" prefHeight="43.0" prefWidth="461.0" promptText="User Name">
+                                            <font>
+                                                <Font name="System Bold" size="20.0" />
+                                            </font>
+                                        </TextField>
+                                        <PasswordField fx:id="loginPasswordField" layoutX="199.0" layoutY="324.0" promptText="Password">
+                                            <font>
+                                                <Font name="System Bold" size="20.0" />
+                                            </font>
+                                        </PasswordField>
+                                        <Label layoutX="253.0" layoutY="481.0" prefHeight="25.0" prefWidth="183.0" text="Don't have an account?">
+                                            <font>
+                                                <Font name="System Bold Italic" size="16.0" />
+                                            </font>
+                                        </Label>
+                              <Hyperlink fx:id="registerLink" layoutX="442.0" layoutY="477.0" onAction="#navigateToRegistrationPage" text="Register">
+                                 <font>
+                                    <Font name="System Italic" size="16.0" />
+                                 </font>
+                              </Hyperlink>
+                                    </children>
+                                </Pane>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
