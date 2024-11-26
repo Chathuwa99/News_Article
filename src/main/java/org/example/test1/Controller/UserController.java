@@ -163,7 +163,7 @@ public class UserController {
 
     private void navigateToUserArticlePageFromRegister() {
         try {
-            AnchorPane articleRoot = FXMLLoader.load(getClass().getResource("/org/example/test1/fxml files/UserView.fxml"));
+            AnchorPane articleRoot = FXMLLoader.load(getClass().getResource("/org/example/test1/fxml files/UserArticlePage.fxml"));
             Scene articleScene = new Scene(articleRoot);
 
             // Use registerButton's scene to avoid null pointer exceptions
@@ -179,7 +179,7 @@ public class UserController {
 
     private void navigateToUserArticlePageFromLogin() {
         try {
-            AnchorPane articleRoot = FXMLLoader.load(getClass().getResource("/org/example/test1/fxml files/UserView.fxml"));
+            AnchorPane articleRoot = FXMLLoader.load(getClass().getResource("/org/example/test1/fxml files/UserArticlePage.fxml"));
             Scene articleScene = new Scene(articleRoot);
 
             // Use loginButton's scene to avoid null pointer exceptions

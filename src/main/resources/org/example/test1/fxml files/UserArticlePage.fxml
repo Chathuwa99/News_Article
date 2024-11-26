@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="686.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.test1.Controller.AdminController">
+<AnchorPane prefHeight="686.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.test1.Controller.UserArticleController">
    <children>
       <Pane prefHeight="686.0" prefWidth="850.0">
          <children>
@@ -20,28 +20,25 @@
                   <Font name="Constantia Bold Italic" size="49.0" />
                </font>
             </Label>
-            <Button fx:id="addArticlesButton" layoutX="228.0" layoutY="612.0" mnemonicParsing="false" text="Add Articles" />
-            <Button fx:id="deleteArticlesButton" layoutX="530.0" layoutY="612.0" mnemonicParsing="false" text="Delete Articles" />
-            <Button fx:id="deleteArticlesButton1" layoutX="29.0" layoutY="31.0" mnemonicParsing="false" text="Back" />
          </children>
       </Pane>
-      <VBox alignment="TOP_CENTER" layoutY="109.0" prefHeight="437.0" prefWidth="850.0" spacing="10">
+      <VBox alignment="TOP_CENTER" layoutY="109.0" prefHeight="577.0" prefWidth="850.0" spacing="10">
 
          <!-- Category Buttons -->
          <HBox alignment="CENTER" prefHeight="145.0" prefWidth="850.0" spacing="10">
-            <Button fx:id="AdmintechnologyButton" prefHeight="26.0" prefWidth="130.0" text="Technology">
+            <Button fx:id="technologyButton" prefHeight="26.0" prefWidth="130.0" text="Technology">
                <HBox.margin>
                   <Insets />
                </HBox.margin></Button>
-            <Button fx:id="AdminhealthButton" prefHeight="26.0" prefWidth="130.0" text="Health" />
-            <Button fx:id="AdmineducationButton" prefHeight="26.0" prefWidth="130.0" text="Education" />
-            <Button fx:id="AdminsportsButton" prefHeight="26.0" prefWidth="130.0" text="Sports" />
-            <Button fx:id="AdminaiButton" prefHeight="26.0" prefWidth="130.0" text="AI" />
-            <Button fx:id="AdminfinanceButton" prefHeight="26.0" prefWidth="130.0" text="Finance" />
+            <Button fx:id="healthButton" prefHeight="26.0" prefWidth="130.0" text="Health" />
+            <Button fx:id="educationButton" prefHeight="26.0" prefWidth="130.0" text="Education" />
+            <Button fx:id="sportsButton" prefHeight="26.0" prefWidth="130.0" text="Sports" />
+            <Button fx:id="aiButton" prefHeight="26.0" prefWidth="130.0" text="AI" />
+            <Button fx:id="financeButton" prefHeight="26.0" prefWidth="130.0" text="Finance" />
          </HBox>
 
          <!-- Article Table -->
-         <TableView fx:id="articleTable" prefHeight="421.0" prefWidth="850.0">
+         <TableView fx:id="articleTable" prefHeight="546.0" prefWidth="850.0">
             <columns>
                <TableColumn fx:id="idColumn" prefWidth="52.80001676082611" text="ID" />
                <TableColumn fx:id="nameColumn" prefWidth="283.9999771118164" text="Article Name" />

@@ -25,7 +25,7 @@ public class AdminController {
     public void navigateToLoginPage() {
         try {
             // Load the login scene
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("org/example/test1/fxml files/LoginPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/test1/fxml files/LoginPage.fxml"));
             AnchorPane loginPage = loader.load();
             Stage stage = (Stage) clickHereLink.getScene().getWindow();
             Scene scene = new Scene(loginPage);
@@ -41,7 +41,7 @@ public class AdminController {
     public void navigateToUserListPage() {
         try {
             // Load the UserList page
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("org/example/test1/fxml files/UserList.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/test1/fxml files/UserList.fxml"));
             AnchorPane userListPage = loader.load();
             Stage stage = (Stage) viewRegisteredUsersButton.getScene().getWindow();
             Scene scene = new Scene(userListPage);
@@ -57,7 +57,7 @@ public class AdminController {
     public void navigateToAdminArticlePage() {
         try {
             // Load the AdminArticlePage
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("org/example/test1/fxml files/AdminArticlePage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/test1/fxml files/AdminArticlePage.fxml"));
             AnchorPane adminArticlePage = loader.load();
             Stage stage = (Stage) viewArticlesButton.getScene().getWindow();
             Scene scene = new Scene(adminArticlePage);

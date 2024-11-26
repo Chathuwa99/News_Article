@@ -1,6 +1,10 @@
 package org.example.test1.Utils;
 
+import org.example.test1.Models.Article;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseConnection {
     private static final String URL = "jdbc:mysql://localhost:3306/article_diary";
@@ -63,5 +67,25 @@ public class DatabaseConnection {
             ResultSet resultSet = stmt.executeQuery();
             return resultSet.next(); // Returns true if the admin exists
         }
+    }
+
+    public static List<Article> getArticlesByCategory(String category) throws SQLException {
+        String query = "SELECT * FROM article WHERE category = ?";
+        List<Article> articles = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, category);
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String articleName = resultSet.getString("articleName");
+                String articleContent = resultSet.getString("articleContent");
+
+                articles.add(new Article(id, articleName, articleContent));
+            }
+        }
+        return articles;
     }
 }
