@@ -1,6 +1,7 @@
 package org.example.test1.Utils;
 
 import org.example.test1.Models.Article;
+import org.example.test1.Models.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 public class DatabaseConnection {
     private static final String URL = "jdbc:mysql://localhost:3306/article_diary";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = ""; // Default XAMPP password for MySQL is empty
+    private static final String PASSWORD = "";
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -43,7 +44,7 @@ public class DatabaseConnection {
             stmt.setString(2, username);
             stmt.setString(3, email);
             stmt.setString(4, password);
-            return stmt.executeUpdate() > 0; // Returns true if at least one row is inserted
+            return stmt.executeUpdate() > 0;
         }
     }
 
@@ -54,7 +55,7 @@ public class DatabaseConnection {
             stmt.setString(1, username);
             stmt.setString(2, password);
             ResultSet resultSet = stmt.executeQuery();
-            return resultSet.next(); // Returns true if the user exists
+            return resultSet.next();
         }
     }
 
@@ -65,7 +66,7 @@ public class DatabaseConnection {
             stmt.setString(1, username);
             stmt.setString(2, password);
             ResultSet resultSet = stmt.executeQuery();
-            return resultSet.next(); // Returns true if the admin exists
+            return resultSet.next();
         }
     }
 
@@ -87,5 +88,26 @@ public class DatabaseConnection {
             }
         }
         return articles;
+    }
+
+    public static List<User> getAllUsers() throws SQLException {
+        String query = "SELECT id, full_name, username, password, email FROM users";
+        List<User> userList = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet resultSet = stmt.executeQuery()) {
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String fullName = resultSet.getString("full_name");
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                String email = resultSet.getString("email");
+
+                userList.add(new User(id, fullName, username, password, email));
+            }
+        }
+        return userList;
     }
 }

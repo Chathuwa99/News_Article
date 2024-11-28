@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="686.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.test1.Controller.AdminController">
+<AnchorPane prefHeight="686.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.test1.Controller.AdminArticleController">
    <children>
       <Pane prefHeight="686.0" prefWidth="850.0">
          <children>
@@ -22,7 +22,7 @@
             </Label>
             <Button fx:id="addArticlesButton" layoutX="228.0" layoutY="612.0" mnemonicParsing="false" text="Add Articles" />
             <Button fx:id="deleteArticlesButton" layoutX="530.0" layoutY="612.0" mnemonicParsing="false" text="Delete Articles" />
-            <Button fx:id="deleteArticlesButton1" layoutX="29.0" layoutY="31.0" mnemonicParsing="false" text="Back" />
+            <Button fx:id="BackButton" layoutX="29.0" layoutY="31.0" mnemonicParsing="false" onAction="#navigateBackToAdminPage" text="Back" />
          </children>
       </Pane>
       <VBox alignment="TOP_CENTER" layoutY="109.0" prefHeight="437.0" prefWidth="850.0" spacing="10">
@@ -43,9 +43,9 @@
          <!-- Article Table -->
          <TableView fx:id="articleTable" prefHeight="421.0" prefWidth="850.0">
             <columns>
-               <TableColumn fx:id="idColumn" prefWidth="52.80001676082611" text="ID" />
-               <TableColumn fx:id="nameColumn" prefWidth="283.9999771118164" text="Article Name" />
-               <TableColumn fx:id="contentColumn" prefWidth="507.9999694824219" text="Content" />
+               <TableColumn fx:id="ID" prefWidth="52.80001676082611" text="ID" />
+               <TableColumn fx:id="Article" prefWidth="283.9999771118164" text="Articel Name" />
+               <TableColumn fx:id="Content" prefWidth="507.9999694824219" text="Content" />
             </columns>
          </TableView>
       </VBox>

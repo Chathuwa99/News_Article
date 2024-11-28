@@ -74,7 +74,7 @@ public class UserController {
         }
 
         try {
-            User user = new User(fullName, userName, password, email);
+            User user = new User(0,fullName, userName, password, email);
             if (user.register()) {
                 showAlert("Success", "User registered successfully!");
                 clearFields("register");
@@ -182,7 +182,7 @@ public class UserController {
             AnchorPane articleRoot = FXMLLoader.load(getClass().getResource("/org/example/test1/fxml files/UserArticlePage.fxml"));
             Scene articleScene = new Scene(articleRoot);
 
-            // Use loginButton's scene to avoid null pointer exceptions
+
             if (loginButton != null) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 stage.setScene(articleScene);

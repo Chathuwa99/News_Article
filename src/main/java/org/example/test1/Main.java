@@ -11,13 +11,14 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        // Fix: Use the correct path to the FXML file
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/test1/fxml files/UserRegistration.fxml"));
         Scene scene = new Scene(loader.load());
-        primaryStage.setTitle("User Registration");
+        primaryStage.setTitle("News Article");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    
 
     public static void main(String[] args) {
         launch(args);

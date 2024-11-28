@@ -20,11 +20,11 @@ public class AdminController {
     @FXML
     private Hyperlink clickHereLink;
 
-    // Method to navigate to the login page when "Click here" is clicked
+
     @FXML
     public void navigateToLoginPage() {
         try {
-            // Load the login scene
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/test1/fxml files/LoginPage.fxml"));
             AnchorPane loginPage = loader.load();
             Stage stage = (Stage) clickHereLink.getScene().getWindow();
@@ -36,7 +36,6 @@ public class AdminController {
         }
     }
 
-    // Method to navigate to the UserList page when the "View Registered Users" button is clicked
     @FXML
     public void navigateToUserListPage() {
         try {
@@ -52,11 +51,11 @@ public class AdminController {
         }
     }
 
-    // Method to navigate to the Admin Article Page when the "View Articles" button is clicked
+
     @FXML
     public void navigateToAdminArticlePage() {
         try {
-            // Load the AdminArticlePage
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/test1/fxml files/AdminArticlePage.fxml"));
             AnchorPane adminArticlePage = loader.load();
             Stage stage = (Stage) viewArticlesButton.getScene().getWindow();

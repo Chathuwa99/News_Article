@@ -46,12 +46,12 @@ public class UserArticleController {
     private Button financeButton;
 
     public void initialize() {
-        // Set up table columns
+
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("articleName"));
         contentColumn.setCellValueFactory(new PropertyValueFactory<>("articleContent"));
 
-        // Set button actions
+
         technologyButton.setOnAction(event -> loadArticlesByCategory("Technology"));
         healthButton.setOnAction(event -> loadArticlesByCategory("Health"));
         educationButton.setOnAction(event -> loadArticlesByCategory("Education"));
