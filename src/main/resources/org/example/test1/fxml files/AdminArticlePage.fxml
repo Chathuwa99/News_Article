@@ -1,53 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="686.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.test1.Controller.AdminArticleController">
+<AnchorPane prefHeight="665.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.test1.Controller.AdminArticleController">
    <children>
-      <Pane prefHeight="686.0" prefWidth="850.0">
-         <children>
-            <Label layoutX="228.0" layoutY="31.0" prefHeight="76.0" prefWidth="395.0" text="ARTICLE  DIARY">
-               <font>
-                  <Font name="Constantia Bold Italic" size="49.0" />
-               </font>
-            </Label>
-            <Button fx:id="addArticlesButton" layoutX="228.0" layoutY="612.0" mnemonicParsing="false" text="Add Articles" />
-            <Button fx:id="deleteArticlesButton" layoutX="530.0" layoutY="612.0" mnemonicParsing="false" text="Delete Articles" />
-            <Button fx:id="BackButton" layoutX="29.0" layoutY="31.0" mnemonicParsing="false" onAction="#navigateBackToAdminPage" text="Back" />
-         </children>
-      </Pane>
-      <VBox alignment="TOP_CENTER" layoutY="109.0" prefHeight="437.0" prefWidth="850.0" spacing="10">
-
-         <!-- Category Buttons -->
-         <HBox alignment="CENTER" prefHeight="145.0" prefWidth="850.0" spacing="10">
-            <Button fx:id="AdmintechnologyButton" prefHeight="26.0" prefWidth="130.0" text="Technology">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin></Button>
-            <Button fx:id="AdminhealthButton" prefHeight="26.0" prefWidth="130.0" text="Health" />
-            <Button fx:id="AdmineducationButton" prefHeight="26.0" prefWidth="130.0" text="Education" />
-            <Button fx:id="AdminsportsButton" prefHeight="26.0" prefWidth="130.0" text="Sports" />
-            <Button fx:id="AdminaiButton" prefHeight="26.0" prefWidth="130.0" text="AI" />
-            <Button fx:id="AdminfinanceButton" prefHeight="26.0" prefWidth="130.0" text="Finance" />
+      <VBox alignment="TOP_CENTER" layoutY="109.0" prefHeight="422.0" prefWidth="850.0" spacing="10">
+         <!-- Search Section -->
+         <HBox alignment="CENTER" spacing="10">
+            <Label text="Search by Keyword:" />
+            <TextField fx:id="keywordTextField" prefWidth="200.0" promptText="Enter keyword..." />
+            <Button fx:id="searchButton" text="Search" />
          </HBox>
 
          <!-- Article Table -->
-         <TableView fx:id="articleTable" prefHeight="421.0" prefWidth="850.0">
+         <TableView fx:id="articleTable" prefHeight="387.0" prefWidth="850.0">
             <columns>
-               <TableColumn fx:id="ID" prefWidth="52.80001676082611" text="ID" />
-               <TableColumn fx:id="Article" prefWidth="283.9999771118164" text="Articel Name" />
-               <TableColumn fx:id="Content" prefWidth="507.9999694824219" text="Content" />
+               <TableColumn fx:id="ID" prefWidth="52.8" text="ID" />
+               <TableColumn fx:id="Article" prefWidth="283.9" text="Article Name" />
+               <TableColumn fx:id="Content" prefWidth="507.9" text="Content" />
             </columns>
          </TableView>
       </VBox>
+      <Button fx:id="BackButton" layoutX="29.0" layoutY="31.0" mnemonicParsing="false" onAction="#navigateBackToAdminPage" text="Back" />
+      <Button fx:id="addArticlesButton" layoutX="385.0" layoutY="587.0" mnemonicParsing="false" onAction="#navigateToAddArticlePage" text="Add Articles" />
+      <Label layoutX="312.0" layoutY="33.0" text="ARTICLE DIARY">
+         <font>
+            <Font name="Constantia Bold" size="40.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

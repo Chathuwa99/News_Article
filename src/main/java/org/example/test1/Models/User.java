@@ -20,7 +20,7 @@ public class User {
         this.email = email;
     }
 
-    // Getter for ID
+
     public int getId() {
         return id;
     }

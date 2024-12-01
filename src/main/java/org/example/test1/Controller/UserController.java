@@ -1,6 +1,7 @@
 package org.example.test1.Controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -45,20 +46,41 @@ public class UserController {
 
     public void initialize() {
         if (registerButton != null) {
-            registerButton.setOnAction(event -> handleRegister());
+            registerButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    handleRegister();
+                }
+            });
         }
 
         if (loginButton != null) {
-            loginButton.setOnAction(event -> handleLogin());
+            loginButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    handleLogin();
+                }
+            });
         }
 
         if (loginLink != null) {
-            loginLink.setOnAction(event -> navigateToLoginPage());
+            loginLink.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    navigateToLoginPage();
+                }
+            });
         }
 
         if (registerLink != null) {
-            registerLink.setOnAction(event -> navigateToRegistrationPage());
+            registerLink.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    navigateToRegistrationPage();
+                }
+            });
         }
+
     }
 
     @FXML
@@ -166,7 +188,7 @@ public class UserController {
             AnchorPane articleRoot = FXMLLoader.load(getClass().getResource("/org/example/test1/fxml files/UserArticlePage.fxml"));
             Scene articleScene = new Scene(articleRoot);
 
-            // Use registerButton's scene to avoid null pointer exceptions
+
             if (registerButton != null) {
                 Stage stage = (Stage) registerButton.getScene().getWindow();
                 stage.setScene(articleScene);

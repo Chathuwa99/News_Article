@@ -39,7 +39,7 @@ public class AdminController {
     @FXML
     public void navigateToUserListPage() {
         try {
-            // Load the UserList page
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/test1/fxml files/UserList.fxml"));
             AnchorPane userListPage = loader.load();
             Stage stage = (Stage) viewRegisteredUsersButton.getScene().getWindow();

@@ -70,24 +70,44 @@ public class DatabaseConnection {
         }
     }
 
-    public static List<Article> getArticlesByCategory(String category) throws SQLException {
-        String query = "SELECT * FROM article WHERE category = ?";
-        List<Article> articles = new ArrayList<>();
-
+    public static boolean deleteUserById(int userId) throws SQLException {
+        String query = "DELETE FROM users WHERE id = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, category);
-            ResultSet resultSet = stmt.executeQuery();
-
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String articleName = resultSet.getString("articleName");
-                String articleContent = resultSet.getString("articleContent");
-
-                articles.add(new Article(id, articleName, articleContent));
-            }
+            stmt.setInt(1, userId);
+            return stmt.executeUpdate() > 0;
         }
-        return articles;
+    }
+
+
+    public static boolean deleteArticleById(int articleId) throws SQLException {
+        String query = "DELETE FROM article WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, articleId);
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
+    public static boolean updateArticle(int articleId, String articleName, String articleContent) throws SQLException {
+        String query = "UPDATE article SET articleName = ?, articleContent = ? WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, articleName);
+            stmt.setString(2, articleContent);
+            stmt.setInt(3, articleId);
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
+    public static boolean insertArticle(String title, String content) throws SQLException {
+        String query = "INSERT INTO article (articleName, articleContent) VALUES (?, ?, ?)";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, title);
+            stmt.setString(3, content);
+            return stmt.executeUpdate() > 0;
+        }
     }
 
     public static List<User> getAllUsers() throws SQLException {
@@ -109,5 +129,45 @@ public class DatabaseConnection {
             }
         }
         return userList;
+    }
+
+    public static Article getArticleById(int articleId) throws SQLException {
+        String query = "SELECT * FROM article WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, articleId);
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String articleName = resultSet.getString("articleName");
+                String articleContent = resultSet.getString("articleContent");
+                String category = resultSet.getString("category");
+
+                return new Article(id, articleName, articleContent, category);
+            }
+        }
+        return null;
+    }
+
+    public static List<Article> getArticlesByKeyword(String keyword) throws SQLException {
+        String query = "SELECT * FROM article WHERE articleName LIKE ? OR articleContent LIKE ?";
+        List<Article> articles = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, "%" + keyword + "%");
+            stmt.setString(2, "%" + keyword + "%");
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String articleName = resultSet.getString("articleName");
+                String articleContent = resultSet.getString("articleContent");
+
+                articles.add(new Article(id, articleName, articleContent, ""));
+            }
+        }
+        return articles;
     }
 }
