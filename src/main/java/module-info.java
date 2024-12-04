@@ -11,4 +11,6 @@ module org.example.test1 {
     opens org.example.test1.Controller to javafx.fxml;
     exports org.example.test1.Models;
     opens org.example.test1.Models to javafx.fxml;
+    opens org.example.test1.Utils to javafx.fxml;
+    exports org.example.test1.Utils;
 }

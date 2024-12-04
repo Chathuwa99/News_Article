@@ -170,4 +170,72 @@ public class DatabaseConnection {
         }
         return articles;
     }
+
+    public static int getUserIdByUsername(String username) throws SQLException {
+        String query = "SELECT id FROM users WHERE username = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, username);
+            ResultSet resultSet = stmt.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt("id");
+            }
+        }
+        return -1; // Return -1 if user not found
+    }
+
+    public static boolean recordUserInteraction(int userId, int articleId, String action) throws SQLException {
+        String query = "INSERT INTO userinteraction (user_id, article_id, user_preference) VALUES (?, ?, ?)";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, userId);
+            stmt.setInt(2, articleId);
+            stmt.setString(3, action);
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
+    // Add this method to DatabaseConnection class
+    public static List<Article> getAllArticles() throws SQLException {
+        String query = "SELECT * FROM article";
+        List<Article> articles = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet resultSet = stmt.executeQuery()) {
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String articleName = resultSet.getString("articleName");
+                String articleContent = resultSet.getString("articleContent");
+                String category = resultSet.getString("category");
+
+                articles.add(new Article(id, articleName, articleContent, category));
+            }
+        }
+        return articles;
+    }
+
+    // Add this method to retrieve user interactions
+    public static List<Integer> getUserInteractionArticles(int userId, String userPreference) throws SQLException {
+        String query = "SELECT DISTINCT article_id FROM userinteraction WHERE user_id = ? AND user_preference = ?";
+        List<Integer> articleIds = new ArrayList<>();
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, userId);
+            stmt.setString(2, userPreference);
+
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                articleIds.add(resultSet.getInt("article_id"));
+            }
+        }
+        return articleIds;
+    }
+
+
+
+
+
 }

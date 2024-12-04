@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="686.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.test1.Controller.UserArticleController">
+<AnchorPane prefHeight="686.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.test1.Controller.UserArticleController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutY="109.0" prefHeight="577.0" prefWidth="850.0" spacing="10">
+      <VBox alignment="TOP_CENTER" layoutX="29.0" layoutY="148.0" prefHeight="480.0" prefWidth="795.0" spacing="10">
 
          <HBox alignment="CENTER" spacing="10">
             <Label text="Search by Keyword:" />
             <TextField fx:id="keywordTextField" prefWidth="200.0" promptText="Enter keyword..." />
             <Button fx:id="searchButton" text="Search" />
+            <Button fx:id="recommendedArticlesButton" mnemonicParsing="false" onAction="#navigateToRecommendedArticles" text="Recommended Articles" />
          </HBox>
 
-
-         <TableView fx:id="articleTable" prefHeight="546.0" prefWidth="850.0">
+         <TableView fx:id="articleTable" layoutX="28.0" prefHeight="470.0" prefWidth="795.0">
             <columns>
                <TableColumn fx:id="idColumn" prefWidth="52.8" text="ID" />
                <TableColumn fx:id="nameColumn" prefWidth="283.9" text="Article Name" />
@@ -22,6 +29,11 @@
             </columns>
          </TableView>
       </VBox>
-      <Button fx:id="backButton" layoutX="34.0" layoutY="36.0" mnemonicParsing="false" onAction="#navigateBackToLoginPage" text="Back " />
+      <Button fx:id="backButton" layoutX="30.0" layoutY="32.0" mnemonicParsing="false" onAction="#navigateBackToLoginPage" text="Back " />
+      <Label layoutX="232.0" layoutY="32.0" text="ARTICLE  DIARY">
+         <font>
+            <Font name="Constantia Bold" size="49.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

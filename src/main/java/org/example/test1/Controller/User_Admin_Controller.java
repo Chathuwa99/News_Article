@@ -9,10 +9,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import org.example.test1.Models.User;
+import org.example.test1.Utils.SessionManager;
+import org.example.test1.Utils.DatabaseConnection;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-public class UserController {
+public class User_Admin_Controller {
 
     @FXML
     private TextField fullNameField;
@@ -44,68 +47,60 @@ public class UserController {
     @FXML
     private Hyperlink registerLink;
 
+
+
     public void initialize() {
         if (registerButton != null) {
-            registerButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    handleRegister();
-                }
-            });
+            registerButton.setOnAction(event -> handleRegister());
         }
 
         if (loginButton != null) {
-            loginButton.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    handleLogin();
-                }
-            });
+            loginButton.setOnAction(event -> handleLogin());
         }
 
         if (loginLink != null) {
-            loginLink.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    navigateToLoginPage();
-                }
-            });
+            loginLink.setOnAction(event -> navigateToLoginPage());
         }
 
         if (registerLink != null) {
-            registerLink.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    navigateToRegistrationPage();
-                }
-            });
+            registerLink.setOnAction(event -> navigateToRegistrationPage());
         }
 
     }
 
     @FXML
-    private void handleRegister() {
+    private void handleRegister()  {
         String fullName = fullNameField.getText();
         String userName = userNameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
+
+        // Email validation regex
+        String emailValidation = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
 
         if (fullName.isEmpty() || userName.isEmpty() || email.isEmpty() || password.isEmpty()) {
             showAlert("Error", "All fields must be filled in.");
             return;
         }
 
+        // Validate email format
+        if (!email.matches(emailValidation)) {
+            showAlert("Error", "Please enter a valid email address.");
+            return;
+        }
+
         try {
-            User user = new User(0,fullName, userName, password, email);
+            User user = new User(0, fullName, userName, password, email);
             if (user.register()) {
                 showAlert("Success", "User registered successfully!");
                 clearFields("register");
-                navigateToUserArticlePageFromRegister();
+                navigateToLoginPageFromRegister();
             }
         } catch (Exception e) {
             showAlert("Error", e.getMessage());
         }
     }
+
 
     @FXML
     private void handleLogin() {
@@ -118,7 +113,14 @@ public class UserController {
         }
 
         try {
-            if (User.login(userName, password)) {
+
+            if (DatabaseConnection.validateUser(userName, password)) {
+
+                int userId = DatabaseConnection.getUserIdByUsername(userName);
+
+
+                SessionManager.setLoggedUserId(userId);
+
                 showAlert("Success", "User login successful!");
                 clearFields("login");
                 navigateToUserArticlePageFromLogin();
@@ -130,7 +132,7 @@ public class UserController {
                 showAlert("Error", "Username or password does not match.");
                 clearFields("login");
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             showAlert("Error", e.getMessage());
         }
     }
@@ -183,9 +185,9 @@ public class UserController {
         }
     }
 
-    private void navigateToUserArticlePageFromRegister() {
+    private void navigateToLoginPageFromRegister() {
         try {
-            AnchorPane articleRoot = FXMLLoader.load(getClass().getResource("/org/example/test1/fxml files/UserArticlePage.fxml"));
+            AnchorPane articleRoot = FXMLLoader.load(getClass().getResource("/org/example/test1/fxml files/LoginPage.fxml"));
             Scene articleScene = new Scene(articleRoot);
 
 
@@ -232,4 +234,6 @@ public class UserController {
 
     public void handleRegisterButtonClick(ActionEvent event) {
     }
+
+
 }
