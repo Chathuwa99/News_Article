@@ -57,7 +57,7 @@ public class User {
         return DatabaseConnection.validateUser(username, password);
     }
 
-    public static boolean adminLogin(String username, String password) throws SQLException {
-        return DatabaseConnection.validateAdmin(username, password);
-    }
+//    public static boolean adminLogin(String username, String password) throws SQLException {
+//        return DatabaseConnection.validateAdmin(username, password);
+//    }
 }

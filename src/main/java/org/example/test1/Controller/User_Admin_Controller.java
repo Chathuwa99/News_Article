@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
+import org.example.test1.Models.Admin;
 import org.example.test1.Models.User;
 import org.example.test1.Utils.SessionManager;
 import org.example.test1.Utils.DatabaseConnection;
@@ -124,7 +125,7 @@ public class User_Admin_Controller {
                 showAlert("Success", "User login successful!");
                 clearFields("login");
                 navigateToUserArticlePageFromLogin();
-            } else if (User.adminLogin(userName, password)) {
+            } else if (Admin.adminLogin(userName, password)) {
                 showAlert("Success", "Admin login successful!");
                 clearFields("login");
                 navigateToAdminPage();
