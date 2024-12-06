@@ -4,10 +4,14 @@ import org.example.test1.Utils.DatabaseConnection;
 
 import java.sql.SQLException;
 
+
 public class Admin {
-    private int id;
-    private String username;
-    private String password;
+
+    // Fields to store admin information.
+    private int id;          // Admin ID
+    private String username; // Admin username
+    private String password; // Admin password
+
 
     public Admin(int id, String username, String password) {
         this.id = id;
@@ -15,19 +19,23 @@ public class Admin {
         this.password = password;
     }
 
+
     public int getId() {
         return id;
     }
+
 
     public String getUsername() {
         return username;
     }
 
+
     public String getPassword() {
         return password;
     }
 
+
     public static boolean adminLogin(String username, String password) throws SQLException {
-        return DatabaseConnection.validateAdmin(username, password);
+        return DatabaseConnection.validateAdmin(username, password); // Call utility method to validate admin credentials.
     }
 }
