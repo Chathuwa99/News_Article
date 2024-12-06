@@ -32,7 +32,7 @@ public class AdminReadArticleController {
         this.currentArticleId = articleId;
         try {
             Article article = DatabaseConnection.getArticleById(articleId);
-            if (article != null) {
+            if (article != null) { 
                 titleField.setText(article.getArticleName());
                 contentArea.setText(article.getArticleContent());
             }

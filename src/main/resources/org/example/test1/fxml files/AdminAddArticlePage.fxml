@@ -4,22 +4,29 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.test1.Controller.AdminAddArticleController">
    <children>
-      <Label layoutX="267.0" layoutY="46.0" text="ADD ARTICLES">
+      <ImageView fitHeight="552.0" fitWidth="823.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Article_image.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="267.0" layoutY="171.0" text="ADD ARTICLES">
          <font>
             <Font name="Constantia Bold Italic" size="40.0" />
          </font>
       </Label>
-      <TextField fx:id="titleField" layoutX="82.0" layoutY="177.0" prefHeight="26.0" prefWidth="394.0" promptText="Enter Title">
+      <TextField fx:id="titleField" layoutX="82.0" layoutY="239.0" prefHeight="26.0" prefWidth="394.0" promptText="Enter Title">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextArea fx:id="contentArea" layoutX="82.0" layoutY="243.0" prefHeight="200.0" prefWidth="655.0" promptText="Type...">
+      <TextArea fx:id="contentArea" layoutX="82.0" layoutY="296.0" prefHeight="147.0" prefWidth="655.0" promptText="Type...">
          <font>
             <Font size="16.0" />
          </font>
